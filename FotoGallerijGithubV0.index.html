@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fotogalerij</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#000;
+    color:#fff;
+    padding:20px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:10px;
+    cursor:pointer;
+    transition:transform 0.2s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+/* Lightbox */
+
+.lightbox{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:90%;
+}
+
+.lightbox.active{
+    display:flex;
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:40px;
+    color:white;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Fotogalerij</h2>
+
+<div class="gallery">
+
+<img src="images/Buitenplaats 1.jpeg" onclick="openImg(this.src)">
+<img src="images/Buitenplaats 2.jpeg" onclick="openImg(this.src)">
+
+<img src="images/Keuken 1.jpeg" onclick="openImg(this.src)">
+<img src="images/Keuken 2.jpeg" onclick="openImg(this.src)">
+
+<img src="images/Toilet.jpeg" onclick="openImg(this.src)">
+
+<img src="images/Werkplaats 1.jpeg" onclick="openImg(this.src)">
+<img src="images/Werkplaats 2.jpeg" onclick="openImg(this.src)">
+<img src="images/Werkplaats 3.jpeg" onclick="openImg(this.src)">
+<img src="images/Werkplaats en Zolder top view.jpeg" onclick="openImg(this.src)">
+
+<img src="images/Zolder 1.jpeg" onclick="openImg(this.src)">
+<img src="images/Zolder 2.jpeg" onclick="openImg(this.src)">
+
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeImg()">
+<span class="close">&times;</span>
+<img id="lightbox-img">
+</div>
+
+<script>
+
+function openImg(src){
+    document.getElementById("lightbox").classList.add("active");
+    document.getElementById("lightbox-img").src = src;
+}
+
+function closeImg(){
+    document.getElementById("lightbox").classList.remove("active");
+}
+
+</script>
+
+</body>
+</html>
